@@ -294,7 +294,7 @@ namespace SimpleWeb {
 
                     size_t protocol_end;
                     if((protocol_end=line.find('/', path_end+1))!=std::string::npos) {
-                        if(line.substr(path_end+1, protocol_end-path_end-1)!="HTTP")
+                        if(line.substr(path_end+1, line.size())!="HTTP/1.1\r")
                             return false;
                         request->http_version=line.substr(protocol_end+1, line.size()-protocol_end-2);
                     }
